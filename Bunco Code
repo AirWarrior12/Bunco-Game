@@ -10,56 +10,61 @@ public class Bunco
    public static void main(String[]args) 
    {
       Random die = new Random();
-      int roll1, roll2, roll3;
+      int die1, die2, die3;
       int sum = 0;
-      int roundScore =0;
+      int roundScore = 0;
       int score = 0;
       boolean noScore = false;
       
   
       System.out.println("Welcome to the Bunco Game");
       //Introduction
-      for(int round = 1; round <= 6; round++) 
+      for (int round = 1; round <= 6; round++) 
       {
-        System.out.println("ROUND " + round);
-
+         System.out.println("ROUND " + round);
          while (roundScore < 21 && noScore == false)
          {
-         roll1 = 1 + die.nextInt(6);
-         roll2 = 1 + die.nextInt(6);
-         roll3 = 1 + die.nextInt(6);
-         System.out.println("You rolled a " + roll1 + " and a " + roll2 + " and a " + roll3);
-         if ((roll1 == round) && (roll2 == round) && (roll3 == round))
-         {
+            die1 = 1 + die.nextInt(6);
+            die2 = 1 + die.nextInt(6);
+            die3 = 1 + die.nextInt(6);
+            System.out.println("You rolled a " + die1 + " and a " + die2 + " and a " + die3);
+            if ((die1 == round) && (die2 == round) && (die3 == round))
+            {
          
-            System.out.println("BUNCO");
-            score = 21;
+               System.out.println("BUNCO");
+               score = 21;
+            }
+            else if ((die1 == die2) && (die2 == die3) && (die3 == die1)) 
+            {
+               score = 5;
+               System.out.println("MINI BUNCO!");
+            }
+            else if ((die1 == round) || (die2 == round) || (die3 == round))
+            {
+               score++;
+            }
+            else 
+            {
+               if (die1 != round)
+               {
+                  score += 0;
+               }
+               if (die2 != round)
+               {
+                  score += 0;
+               }
+               if (die3 != round)
+               {
+                  score += 0;
+                  noScore = true;
+               }
+            }
          }
-         else if ((roll1 == roll2) && (roll2 == roll3) && (roll3 == roll1)) 
-         {
-            score = 5;
-            System.out.println( "MINI BUNCO!");
-         }
-         else if ((roll1 == round) || (roll2 == round) || (roll3 == round))
-         {
-            score++;
-         }
-         else 
-         {
-            if (roll1 != round)
-            score += 0;
-            if (roll2 != round)
-            score += 0;
-            if (roll3 != round)
-            score += 0;
-            noScore = true;
-         }
-      }
-         System.out.println("You score for round "+round+" is "+score);
+         System.out.println("You score for round " + round + " is " + score);
          sum += score; 
-   }
+      }
               
-      System.out.println("Score for all round is "+sum);           
-  }
+      System.out.println("Score for all rounds is " + sum);           
+   }
 } 
      
