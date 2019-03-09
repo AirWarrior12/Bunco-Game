@@ -9,69 +9,56 @@ public class Bunco
 {
    public static void main(String[]args) 
    {
-      Random die = new Random();
-      int die1, die2, die3;
+      Die die1 = new Die(6);
+      Die die2 = new Die(6);
+      Die die3 = new Die(6);
+      int die1Face = die1.getFaceValue();
+      int die2Face = die2.getFaceValue();
+      int die3Face = die3.getFaceValue(); 
       int sum = 0;
+      int round = 1;
       int roundScore = 0;
-      int score = 0;
       boolean noScore = false;
+      
       
   
       System.out.println("Welcome to the Bunco Game");
       //Introduction
-      for (int round = 1; round <= 6; round++) 
+      for ( round = 1; round <= 6; round++) 
       {
          System.out.println("ROUND " + round);
-         while (roundScore < 21 && noScore == false)
+         while (roundScore < 21 && noScore == false  )
          {
-            die1 = 1 + die.nextInt(6);
-            die2 = 1 + die.nextInt(6);
-            die3 = 1 + die.nextInt(6);
-            System.out.println("You rolled a " + die1 + " and a " + die2 + " and a " + die3);
-            if ((die1 == round) && (die2 == round) && (die3 == round))
+            die1.roll(); //Not quite sure how to to implement this
+            die2.roll();
+            die3.roll();
+            System.out.println("You rolled a " + die1.getFaceValue() + " and a " + die2.getFaceValue() + " and a " + die3.getFaceValue());
+            if ( die1.getFaceValue() = round && die2.getFaceValue() = round && die3.getFaceValue() == round)
             {
                roundScore += 21;         
                System.out.println("BUNCO");
-               score += 21;
             }
-            else if ((die1 == die2) && (die2 == die3) && (die3 == die1)) 
+            // This is where I get the error
+            else if ( die1.getFaceValue() == die2.getFaceValue() && die2.getFaceValue() == die3.getFaceValue() && die3.getFaceValue() == die1.getFaceValue())
             {
                roundScore += 5;
-               score += 5;
                System.out.println("MINI BUNCO!");
             }
-            else if ((die1 == round) || (die2 == round) || (die3 == round))
+            else if ((die1.getFaceValue() == round) || (die2.getFaceValue() == round) || (die3.getFaceValue() == round))
             {
                roundScore += 1;
-               score += 1;
             }
             else 
             {
-               if (die1 != round)
-               {
-                  roundScore += 0;
-                  score += 0;
-                  noScore = true;
-               }
-               if (die2 != round)
-               {
-                  roundScore += 0;
-                  score += 0;
-                  noScore = true;
-               }
-               if (die3 != round)
-               {
-                  roundScore += 0;
-                  score += 0;
-                  noScore = true;
-               }
+               roundScore += 0;
+               noScore = true;
             }
          }
-         System.out.println("You score for round " + round + " is " + score);
-         sum += score; 
+         System.out.println("You score for round " + round + " is " + roundScore);
+         sum += roundScore;
       }
               
-      System.out.println("Score for all rounds is " + sum);           
+      System.out.println("Score for all rounds is " + sum);          
    }
 } 
      
