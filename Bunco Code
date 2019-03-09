@@ -1,0 +1,59 @@
+// Name : Eli Fink 
+// Class : CIST1400-001
+// Colleagues : None
+// Resources : N/A
+// Calculating a person's Bunco score
+
+import java.util.Random;
+public class Bunco 
+{
+   public static void main(String[]args) 
+   {
+      Random die = new Random();
+      int roll1, roll2, roll3;
+      int sum = 0;
+      int score = 0;
+      int round = 1;
+      
+  
+      System.out.println("Welcome to the Bunco Game");
+      //Introduction
+      System.out.println("ROUND "+round);
+      do
+      {
+         roll1 = 1 + die.nextInt(6);
+         roll2 = 1 + die.nextInt(6);
+         roll3 = 1 + die.nextInt(6);
+         System.out.println("You rolled a "+roll1+" and a "+roll2+" and a "+roll3);
+         if ((roll1 == round) && (roll2 == round) && (roll3 == round))
+         {
+            System.out.println("BUNCO");
+            score = 21;
+         }
+         else if ((roll1 == roll2) && (roll2 == roll3) && (roll3 == roll1)) 
+         {
+            score = 5;
+            System.out.println( "MINI BUNCO!");
+         }
+         else if ((roll1 != round) && (roll2 != round) && (roll3 != round))
+         {
+            score = 0;
+         }
+         else if ((roll1 == round) || (roll2 == round) || (roll3 == round))
+         {
+            score++;
+         }
+         else
+         {
+            break;
+         }
+        System.out.println("You score for round "+round+" is "+score);
+        sum += score;
+        round ++;
+            
+      } while (round <= 6);
+      
+      System.out.println("Score for all round is "+sum);           
+   } 
+}
+     
