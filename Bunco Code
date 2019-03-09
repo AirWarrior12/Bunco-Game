@@ -39,14 +39,16 @@ public class Bunco
          {
             score = 0;
          }
-         else if ((roll1 == round) || (roll2 == round) || (roll3 == round))
+         else 
          {
+            if (roll1 == round)
+            score++;
+            if (roll2 == round)
+            score++;
+            if (roll3 == round)
             score++;
          }
-         else
-         {
-            break;
-         }
+        
         System.out.println("You score for round "+round+" is "+score);
         sum += score;
         round ++;
