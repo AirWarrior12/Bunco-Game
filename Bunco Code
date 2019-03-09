@@ -12,19 +12,23 @@ public class Bunco
       Random die = new Random();
       int roll1, roll2, roll3;
       int sum = 0;
+      int roundScore =0;
       int score = 0;
-      int round = 1;
+      boolean noScore = false;
       
   
       System.out.println("Welcome to the Bunco Game");
       //Introduction
-      do
+      for(int round = 1; round <= 6; round++) 
       {
-         System.out.println("ROUND "+round);
+        System.out.println("ROUND " + round);
+
+         while (roundScore < 21 && noScore == false)
+         {
          roll1 = 1 + die.nextInt(6);
          roll2 = 1 + die.nextInt(6);
          roll3 = 1 + die.nextInt(6);
-         System.out.println("You rolled a "+roll1+" and a "+roll2+" and a "+roll3);
+         System.out.println("You rolled a " + roll1 + " and a " + roll2 + " and a " + roll3);
          if ((roll1 == round) && (roll2 == round) && (roll3 == round))
          {
             System.out.println("BUNCO");
@@ -37,7 +41,7 @@ public class Bunco
          }
          else if ((roll1 != round) && (roll2 != round) && (roll3 != round))
          {
-            score = 0;
+            score++;
          }
          else 
          {
@@ -46,16 +50,14 @@ public class Bunco
             if (roll2 == round)
             score++;
             if (roll3 == round)
-            score++;
+            score = 0;
          }
-        
-        System.out.println("You score for round "+round+" is "+score);
-        sum += score;
-        round ++;
-            
-      } while (round <= 6);
-      
+         System.out.println("You score for round "+round+" is "+score);
+         sum += score; 
+      }
+   }
+              
       System.out.println("Score for all round is "+sum);           
-   } 
-}
+  }
+} 
      
