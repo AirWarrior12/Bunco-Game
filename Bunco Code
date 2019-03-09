@@ -18,9 +18,9 @@ public class Bunco
   
       System.out.println("Welcome to the Bunco Game");
       //Introduction
-      System.out.println("ROUND "+round);
       do
       {
+         System.out.println("ROUND "+round);
          roll1 = 1 + die.nextInt(6);
          roll2 = 1 + die.nextInt(6);
          roll3 = 1 + die.nextInt(6);
