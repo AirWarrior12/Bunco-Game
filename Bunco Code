@@ -3,8 +3,6 @@
 // Colleagues : None
 // Resources : N/A
 // Calculating a person's Bunco score
-
-import java.util.Random;
 public class Bunco 
 {
    public static void main(String[]args) 
@@ -14,7 +12,10 @@ public class Bunco
       Die die3 = new Die(6);
       int die1Face = die1.getFaceValue();
       int die2Face = die2.getFaceValue();
-      int die3Face = die3.getFaceValue(); 
+      int die3Face = die3.getFaceValue();
+      int die1roll = die1.roll();
+      int die2roll = die2.roll();
+      int die3roll = die3.roll(); 
       int sum = 0;
       int round = 1;
       int roundScore = 0;
@@ -24,22 +25,23 @@ public class Bunco
   
       System.out.println("Welcome to the Bunco Game");
       //Introduction
-      for ( round = 1; round <= 6; round++) 
+      for (round = 1; round <= 6; round++) 
       {
          System.out.println("ROUND " + round);
-         while (roundScore < 21 && noScore == false  )
+         while (roundScore < 21 && noScore == false)
          {
-            die1.roll(); //Not quite sure how to to implement this
+            die1.roll(); 
             die2.roll();
             die3.roll();
+            
             System.out.println("You rolled a " + die1.getFaceValue() + " and a " + die2.getFaceValue() + " and a " + die3.getFaceValue());
-            if ( die1.getFaceValue() = round && die2.getFaceValue() = round && die3.getFaceValue() == round)
+            if (die1.getFaceValue() == round && die2.getFaceValue() == round && die3.getFaceValue() == round)
             {
                roundScore += 21;         
                System.out.println("BUNCO");
             }
-            // This is where I get the error
-            else if ( die1.getFaceValue() == die2.getFaceValue() && die2.getFaceValue() == die3.getFaceValue() && die3.getFaceValue() == die1.getFaceValue())
+            
+            else if (die1.getFaceValue() == die2.getFaceValue() && die2.getFaceValue() == die3.getFaceValue() && die3.getFaceValue() == die1.getFaceValue())
             {
                roundScore += 5;
                System.out.println("MINI BUNCO!");
