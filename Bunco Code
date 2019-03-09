@@ -31,6 +31,7 @@ public class Bunco
          System.out.println("You rolled a " + roll1 + " and a " + roll2 + " and a " + roll3);
          if ((roll1 == round) && (roll2 == round) && (roll3 == round))
          {
+         
             System.out.println("BUNCO");
             score = 21;
          }
@@ -39,22 +40,23 @@ public class Bunco
             score = 5;
             System.out.println( "MINI BUNCO!");
          }
-         else if ((roll1 != round) && (roll2 != round) && (roll3 != round))
+         else if ((roll1 == round) || (roll2 == round) || (roll3 == round))
          {
             score++;
          }
          else 
          {
-            if (roll1 == round)
-            score++;
-            if (roll2 == round)
-            score++;
-            if (roll3 == round)
-            score = 0;
+            if (roll1 != round)
+            score += 0;
+            if (roll2 != round)
+            score += 0;
+            if (roll3 != round)
+            score += 0;
+            noScore = true;
          }
+      }
          System.out.println("You score for round "+round+" is "+score);
          sum += score; 
-      }
    }
               
       System.out.println("Score for all round is "+sum);           
